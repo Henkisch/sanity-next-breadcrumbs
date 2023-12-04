@@ -89,7 +89,7 @@ export function loadProject(slug: string) {
   )
 }
 
-export function loadPage(slug: string) {
+export function loadPage(slug: string | string[]) {
   return loadQuery<PagePayload | null>(
     pagesBySlugQuery,
     { slug },

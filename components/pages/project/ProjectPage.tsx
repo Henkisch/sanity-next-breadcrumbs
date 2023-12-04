@@ -1,6 +1,7 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader/rsc'
 import Link from 'next/link'
 
+import BreadCrumbs from '@/components/shared/Breadcrumbs'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
@@ -22,6 +23,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
     site,
     tags,
     title,
+    breadcrumb
   } = data ?? {}
 
   const startYear = new Date(duration?.start!).getFullYear()
@@ -29,8 +31,14 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
 
   return (
     <div>
-      <div className="mb-20 space-y-6">
-        {/* Header */}
+      <div className="">
+        {breadcrumb && (
+          <BreadCrumbs items={breadcrumb.items} />
+        )}
+
+        <div className="my-20 px-4 md:px-16 lg:px-32 space-y-6">
+
+          {/* Header */}
         <Header title={title} description={overview} />
 
         <div className="rounded-md border">
@@ -85,7 +93,8 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
             )}
 
             {/* Tags */}
-            <div className="p-3 lg:p-4">
+            {tags && (
+              <div className="p-3 lg:p-4">
               <div className="text-xs md:text-sm">Tags</div>
               <div className="text-md flex flex-row flex-wrap md:text-lg">
                 {tags?.map((tag, key) => (
@@ -95,6 +104,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
                 ))}
               </div>
             </div>
+            )}
           </div>
         </div>
 
@@ -105,7 +115,8 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
             value={description}
           />
         )}
-      </div>
+        </div>
+        </div>
       <div className="absolute left-0 w-screen border-t" />
     </div>
   )

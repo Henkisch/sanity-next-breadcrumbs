@@ -1,3 +1,4 @@
+import BreadCrumbs from '@/components/shared/Breadcrumbs'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import type { PagePayload } from '@/types'
@@ -8,12 +9,17 @@ export interface PageProps {
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = data ?? {}
+  const { body, overview, title, breadcrumb } = data ?? {}
 
   return (
     <div>
-      <div className="mb-14">
-        {/* Header */}
+      <div className="space-y-20 mb-20">
+        {breadcrumb && (
+          <BreadCrumbs items={breadcrumb.items} />
+        )}
+
+        <div className="px-4 md:px-16 lg:px-32">
+          {/* Header */}
         <Header title={title} description={overview} />
 
         {/* Body */}
@@ -23,6 +29,8 @@ export function Page({ data }: PageProps) {
             value={body}
           />
         )}
+
+        </div>
       </div>
       <div className="absolute left-0 w-screen border-t" />
     </div>

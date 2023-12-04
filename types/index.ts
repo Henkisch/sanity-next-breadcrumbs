@@ -3,8 +3,8 @@ import type { Image } from 'sanity'
 
 export interface MenuItem {
   _type: string
-  slug?: string
-  title?: string
+  slug: string
+  title: string
 }
 
 export interface MilestoneItem {
@@ -36,12 +36,20 @@ export interface HomePagePayload {
   title?: string
 }
 
+export interface ProjectsPagePayload {
+  projects?: ShowcaseProject[]
+  title?: string
+}
+
 export interface PagePayload {
   body?: PortableTextBlock[]
   name?: string
   overview?: PortableTextBlock[]
   title?: string
-  slug?: string
+  slug?: string | string[]
+  breadcrumb?: {
+    items: MenuItem[]
+  }
 }
 
 export interface ProjectPayload {
@@ -57,6 +65,9 @@ export interface ProjectPayload {
   slug: string
   tags?: string[]
   title?: string
+  breadcrumb?: {
+    items: MenuItem[]
+  }
 }
 
 export interface SettingsPayload {

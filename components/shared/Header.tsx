@@ -1,12 +1,15 @@
+import { sub } from 'date-fns'
+
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 interface HeaderProps {
   centered?: boolean
   description?: any[]
   title?: string
+  subTitle?: string
 }
 export function Header(props: HeaderProps) {
-  const { title, description, centered = false } = props
+  const { title, description, centered = false, subTitle } = props
   if (!description && !title) {
     return null
   }
@@ -17,6 +20,11 @@ export function Header(props: HeaderProps) {
         <div className="text-3xl font-extrabold tracking-tight md:text-5xl">
           {title}
         </div>
+      )}
+      {subTitle && (
+          <div className="mt-4 font-serif text-xl text-gray-700 md:text-2xl">
+              <strong>{subTitle}</strong>
+          </div>
       )}
       {/* Description */}
       {description && (

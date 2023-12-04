@@ -22,7 +22,27 @@ export const pagesBySlugQuery = groq`
     body,
     overview,
     title,
+    shortTitle,
     "slug": slug.current,
+    "breadcrumb": {
+      "items": [
+        {
+          "_type": parent->parent->_type,
+          "title": parent->parent->title,
+          "slug": parent->parent->slug.current
+        },
+        {
+          "_type": parent->_type,
+          "title": parent->title,
+          "slug": parent->slug.current
+        },
+        {
+          _type,
+          "title": title,
+          "slug": slug.current
+        },
+      ],
+    },
   }
 `
 
@@ -38,6 +58,20 @@ export const projectBySlugQuery = groq`
     "slug": slug.current,
     tags,
     title,
+    "breadcrumb": {
+      "items": [
+        {
+          "_type": 'page',
+          "title": 'Projects',
+          "slug": 'projects'
+        },
+        {
+          _type,
+          title,
+          "slug": slug.current
+        },
+      ],
+    },
   }
 `
 

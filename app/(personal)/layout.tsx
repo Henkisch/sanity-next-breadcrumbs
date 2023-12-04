@@ -8,7 +8,6 @@ import { Suspense } from 'react'
 
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
-import IntroTemplate from '@/intro-template'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -52,13 +51,12 @@ export default async function IndexRoute({
         <Suspense>
           <Navbar />
         </Suspense>
-        <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">
+        <div className="flex-grow">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>
           <Footer />
         </Suspense>
-        <IntroTemplate />
       </div>
       {draftMode().isEnabled && <VisualEditing />}
     </>
