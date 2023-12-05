@@ -45,7 +45,7 @@ export default function BreadCrumbs({ items, prefixItems = [], rootLabel = "Home
 
         {allItems.map((link, index: number) => {
 
-          if(!link || !link.slug) return;
+          if(!link) return;
 
           const isLast = allItems.length === index + 1;
           const href = resolveHref(link?._type, link?.slug)
