@@ -26,16 +26,16 @@ export const pagesBySlugQuery = groq`
     "slug": slug.current,
     "breadcrumb": {
       "items": [
-        {
+        select(defined(parent->parent->) => {
           "_type": parent->parent->_type,
           "title": parent->parent->title,
           "slug": parent->parent->slug.current
-        },
-        {
+        }),
+        select(defined(parent) => {
           "_type": parent->_type,
           "title": parent->title,
           "slug": parent->slug.current
-        },
+        }),
         {
           _type,
           "title": title,
@@ -60,14 +60,15 @@ export const projectBySlugQuery = groq`
     title,
     "breadcrumb": {
       "items": [
+        // Provide a parent item for each project so we can navigate back.
         {
-          "_type": 'page',
-          "title": 'Projects',
-          "slug": 'projects'
+          "_type": "page",
+          "slug": "projects",
+          "title": "Projects"
         },
         {
           _type,
-          title,
+          "title": title,
           "slug": slug.current
         },
       ],

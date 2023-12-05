@@ -5,17 +5,18 @@ import { Header } from '@/components/shared/Header'
 
 export function ProjectsPage() {
   // Default to an empty object to allow previews on non-existent documents
-  const items = [
-    {
-      "slug": "projects",
-      "title": "Projects",
-      "_type": "page"
-    }
-  ]
 
   return (
     <div className="space-y-20">
-      <BreadCrumbs items={items} />
+      <BreadCrumbs
+        items={[
+          {
+            "slug": "projects",
+            "title": "Projects",
+            "_type": "page"
+          }
+        ]}
+      />
 
       <div className="px-4 md:px-16 lg:px-32">
         {/* Header */}

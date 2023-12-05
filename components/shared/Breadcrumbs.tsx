@@ -3,12 +3,24 @@ import Link from 'next/link'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem } from '@/types'
 interface BreadCrumbsProps {
-  className?: string
   items: MenuItem[];
+  rootLabel?: string;
+  prefixItems?: MenuItem[];
 }
 
-export default function BreadCrumbs({ items, className }: BreadCrumbsProps) {
-  if (!items) return
+export default function BreadCrumbs({ items, prefixItems = [], rootLabel = "Home" }: BreadCrumbsProps) {
+  if (!items) return;
+
+  let allItems: MenuItem[]
+
+  if (prefixItems.length > 0) {
+    allItems = [...prefixItems, ...items]
+    items.concat(prefixItems)
+  } else {
+    allItems = items;
+  }
+
+  console.log(allItems)
 
   const Separator = () => (
     <span aria-hidden="true" className="text-gray-600">
@@ -25,19 +37,19 @@ export default function BreadCrumbs({ items, className }: BreadCrumbsProps) {
   )
 
   return (
-    <nav aria-label="Breadcrumb navigation" className={`px-4 md:px-16 lg:px-32 py-3 mt-2 bg-gray-50/60 ${className ? className : ''}`}>
+    <nav aria-label="Breadcrumb navigation" className={`px-4 md:px-16 lg:px-32 py-3 bg-gray-50/60`}>
       <ol className={'flex items-center gap-1 text-sm list-none	m-0'}>
-        <li className={'text-gray-600 transition hover:text-gray-900'}><Link href={'/'}>Home</Link></li>
+        <li className={'text-gray-600 transition hover:text-gray-900'}><Link href={'/'}>{rootLabel}</Link></li>
 
-        {items && (
+        {allItems && (
           <Separator />
         )}
 
-        {items.map((link, index: number) => {
+        {allItems.map((link, index: number) => {
 
-          if(!link._type) return;
+          if(!link || !link.slug) return;
 
-          const isLast = items.length === index + 1;
+          const isLast = allItems.length === index + 1;
           const href = resolveHref(link?._type, link?.slug)
 
           if (!href) {
