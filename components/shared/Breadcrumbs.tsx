@@ -20,8 +20,6 @@ export default function BreadCrumbs({ items, prefixItems = [], rootLabel = "Home
     allItems = items;
   }
 
-  console.log(allItems)
-
   const Separator = () => (
     <span aria-hidden="true" className="text-gray-600">
       <svg

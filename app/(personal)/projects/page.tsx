@@ -24,17 +24,17 @@ export function ProjectsPage() {
         {/* Showcase projects */}
         <ul className="flex flex-col mt-12 gap-4 ml-0 font-bold">
           <li>
-            <Link href="/projects/project-x">
+            <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-x">
               Projext X
             </Link>
           </li>
           <li>
-            <Link href="/projects/project-y">
+            <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-y">
               Projext Y
             </Link>
           </li>
           <li>
-            <Link href="/projects/project-z">
+            <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-z">
               Projext X
             </Link>
           </li>
