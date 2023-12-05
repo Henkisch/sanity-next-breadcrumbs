@@ -38,7 +38,7 @@ export const pagesBySlugQuery = groq`
         }),
         {
           _type,
-          "title": title,
+          title,
           "slug": slug.current
         },
       ],
@@ -68,7 +68,7 @@ export const projectBySlugQuery = groq`
         },
         {
           _type,
-          "title": title,
+          title,
           "slug": slug.current
         },
       ],
