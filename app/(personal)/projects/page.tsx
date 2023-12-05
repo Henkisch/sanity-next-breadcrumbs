@@ -35,7 +35,7 @@ export function ProjectsPage() {
           </li>
           <li>
             <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-z">
-              Projext X
+              Projext Z
             </Link>
           </li>
         </ul>
