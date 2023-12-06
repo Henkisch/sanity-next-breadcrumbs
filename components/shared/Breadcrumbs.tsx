@@ -35,8 +35,8 @@ export default function BreadCrumbs({ items, prefixItems = [], rootLabel = "Home
   )
 
   return (
-    <nav aria-label="Breadcrumb navigation" className={`px-4 md:px-16 lg:px-32 py-3 bg-gray-50/60`}>
-      <ol className={'flex items-center gap-1 text-sm list-none	m-0'}>
+    <nav aria-label="Breadcrumb navigation" className={`md:px-16 lg:px-32 py-3 bg-gray-50/60`}>
+      <ol className={'flex pl-4 items-center gap-[2px] w-full overflow-auto text-xs list-none m-0 md:p-0 lg:text-sm lg:gap-1'}>
         <li className={'text-gray-600 transition hover:text-gray-900'}><Link href={'/'}>{rootLabel}</Link></li>
 
         {allItems && (
@@ -59,7 +59,7 @@ export default function BreadCrumbs({ items, prefixItems = [], rootLabel = "Home
               <li className="" key={link.slug}>
 
                 <Link
-                  className={`transition ${isLast && 'text-gray-900 transition hover:text-gray-600'} ${!isLast && 'text-gray-600 hover:text-gray-900'}`}
+                  className={`transition whitespace-nowrap ${isLast && 'text-gray-900 transition hover:text-gray-600'} ${!isLast && 'text-gray-600 hover:text-gray-900'}`}
                   href={href}
                   aria-current={isLast ? 'page' : 'false'}
                 >
