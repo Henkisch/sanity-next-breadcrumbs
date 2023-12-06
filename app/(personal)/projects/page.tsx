@@ -25,17 +25,17 @@ export function ProjectsPage() {
         <ul className="flex flex-col mt-12 gap-4 ml-0 font-bold">
           <li>
             <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-x">
-              Projext X
+              Project X
             </Link>
           </li>
           <li>
             <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-y">
-              Projext Y
+              Project Y
             </Link>
           </li>
           <li>
             <Link className="underline underline-offset-4 transition hover:decoration-gray-900/50" href="/projects/project-z">
-              Projext Z
+              Project Z
             </Link>
           </li>
         </ul>
